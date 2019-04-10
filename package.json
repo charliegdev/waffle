@@ -30,7 +30,6 @@
     "react": "^16.8.6",
     "react-app-polyfill": "^0.2.2",
     "react-dom": "^16.8.6",
-    "react-toolbox": "^2.0.0-beta.13",
     "resolve": "1.10.0",
     "sass-loader": "7.1.0",
     "style-loader": "0.23.1",
