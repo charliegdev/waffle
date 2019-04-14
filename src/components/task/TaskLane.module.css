@@ -1,0 +1,11 @@
+.title {
+  font-weight: bold;
+  text-align: center;
+}
+
+.container {
+  background-color: #eeeeee;
+  padding-top: 50px;
+  height: 100vh;
+  width: 350px;
+}
