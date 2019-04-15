@@ -5,7 +5,9 @@
 
 .container {
   background-color: #eeeeee;
-  padding-top: 50px;
+  float: left;
   min-height: max-content;
+  padding-top: 50px;
   width: 350px;
+  margin-left: 10px;
 }
