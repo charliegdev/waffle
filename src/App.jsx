@@ -1,43 +1,17 @@
 import React from 'react';
-import { Task, TaskLane } from './components/task';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { Topbar } from './components/topbar';
+import { Tasks } from './pages';
 import 'antd/dist/antd.css';
 import styles from './App.module.css';
 
 const App = () => (
-  <div className={styles.container}>
-    <Topbar />
-
-    <TaskLane laneTitle="To Do">
-      {[1, 2, 3, 4, 5, 6, 7].map((index) => (
-        <Task title="A sample task">
-          <p>Description line 1</p>
-          <p>Description line 2</p>
-          <p>Description line 3</p>
-        </Task>
-      ))}
-    </TaskLane>
-
-    <TaskLane laneTitle="In Progress">
-      {[1, 2, 3, 4, 5, 6, 7].map((index) => (
-        <Task title="A sample task">
-          <p>Description line 1</p>
-          <p>Description line 2</p>
-          <p>Description line 3</p>
-        </Task>
-      ))}
-    </TaskLane>
-
-    <TaskLane laneTitle="Ready for Test">
-      {[1, 2, 3].map((index) => (
-        <Task title="A sample task">
-          <p>Description line 1</p>
-          <p>Description line 2</p>
-          <p>Description line 3</p>
-        </Task>
-      ))}
-    </TaskLane>
-  </div>
+  <Router>
+    <div className={styles.container}>
+      <Topbar />
+      <Route path="/" component={Tasks} />
+    </div>
+  </Router>
 );
 
 export default App;
