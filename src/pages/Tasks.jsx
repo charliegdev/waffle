@@ -42,14 +42,15 @@ const mockTasks = [
 ];
 
 const Tasks = () => (
-  // Can't guarantee the order of Object.keys(status), so do it manually. Should find a better way
   <div>
-    {[status.TO_DO, status.IN_PROGRESS, status.READY_FOR_TEST, status.COMPLETED].map((status, index) => (
-      <TaskLane laneTitle={status} index={index}>
+    {Object.entries(status).map(([key, stringLiteral], index) => (
+      <TaskLane laneTitle={stringLiteral} index={index} key={stringLiteral}>
         {mockTasks
-          .filter((task) => task.status === status)
+          .filter((task) => task.status === stringLiteral)
           .map((task) => (
-            <Task title={task.title}>{task.description}</Task>
+            <Task title={task.title} key={task.title}>
+              {task.description}
+            </Task>
           ))}
       </TaskLane>
     ))}
