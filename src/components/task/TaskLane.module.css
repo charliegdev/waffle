@@ -10,4 +10,7 @@
   padding-top: 50px;
   width: 350px;
   margin-left: 10px;
+  position: fixed;
+  overflow: auto;
+  height: 100%;
 }
