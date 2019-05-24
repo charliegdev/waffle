@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Card } from 'antd';
-import styles from './Task.module.css';
+import styles from './Task.module.scss';
 
 const Task = ({ title, children }) => (
   <Card title={title} className={styles.container}>

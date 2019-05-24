@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styles from './TaskLane.module.css';
+import styles from './TaskLane.module.scss';
 
 const TaskLane = ({ children, laneTitle, index }) => (
   <div
