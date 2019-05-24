@@ -1,3 +1,6 @@
-const reducerPlaceholder = () => ({});
+import { combineReducers } from 'redux';
+import tasks from './tasks';
 
-export default reducerPlaceholder;
+export default combineReducers({
+  tasks
+});

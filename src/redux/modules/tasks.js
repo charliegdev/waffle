@@ -1,3 +1,5 @@
+import { mockTasks } from '../../constants';
+
 const CREATE = 'waffle/tasks/CREATE';
 const UPDATE = 'waffle/tasks/UPDATE';
 const DELETE = 'waffle/tasks/DELETE';
@@ -49,7 +51,7 @@ const updateTaskReducer = (state, action) => state.map((task) => (task.id === ac
  * @param {Action} action
  * @returns {Task[]}
  */
-export default (state, action) => {
+export default (state = mockTasks, action) => {
   switch (action.type) {
     case CREATE:
       return createTaskReducer(state, action);
