@@ -1,7 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import { Button, Textarea, TextInput } from "evergreen-ui";
-import { Dialog } from "./components/dialog";
+import { NewTaskDialog } from "./components/dialog";
 import { Tasks } from "./pages";
 import { Topbar } from "./components/topbar";
 import "normalize.css/normalize.css";
@@ -13,20 +12,7 @@ const App = () => (
   <Router>
     <div className={styles.container}>
       <Topbar>
-        <Dialog
-          confirmLabel="Confirm"
-          title="Add a new task"
-          trigger={
-            <Button appearance="primary" iconBefore="new-object">
-              New Task
-            </Button>
-          }
-        >
-          <TextInput name="task-title" placeholder="Title" width="100%" />
-          <br />
-          <br />
-          <Textarea name="task-description" placeholder="Description" />
-        </Dialog>
+        <NewTaskDialog onConfirm={(title, description) => console.log(title, description)} />
       </Topbar>
       <Route path="/" component={Tasks} />
     </div>

@@ -6,8 +6,13 @@ class Dialog extends Component {
   static propTypes = {
     children: PropTypes.node.isRequired,
     confirmLabel: PropTypes.string.isRequired,
+    onConfirm: PropTypes.func,
     title: PropTypes.string.isRequired,
     trigger: PropTypes.node.isRequired
+  };
+
+  static defaultProps = {
+    onConfirm: close => close()
   };
 
   constructor(props) {
@@ -17,8 +22,14 @@ class Dialog extends Component {
       isShown: false
     };
 
+    this.onConfirm = this.onConfirm.bind(this);
     this.close = this.close.bind(this);
     this.open = this.open.bind(this);
+  }
+
+  onConfirm() {
+    this.props.onConfirm();
+    this.close();
   }
 
   close() {
@@ -36,8 +47,9 @@ class Dialog extends Component {
           <EvergreenDialog
             confirmLabel={this.props.confirmLabel}
             isShown={this.state.isShown}
-            title={this.props.title}
             onCloseComplete={this.close}
+            onConfirm={this.onConfirm}
+            title={this.props.title}
           >
             {this.props.children}
           </EvergreenDialog>
