@@ -1,51 +1,41 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { Dialog as EvergreenDialog, Pane } from "evergreen-ui";
 
-class Dialog extends Component {
-  static propTypes = {
-    children: PropTypes.node.isRequired,
-    confirmLabel: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-    trigger: PropTypes.node.isRequired
-  };
+const Dialog = ({ children, confirmLabel, onConfirm, title, trigger }) => {
+  const [isShown, setIsShown] = useState(false);
 
-  constructor(props) {
-    super(props);
+  return (
+    <div>
+      <Pane>
+        <EvergreenDialog
+          confirmLabel={confirmLabel}
+          isShown={isShown}
+          onCloseComplete={() => setIsShown(false)}
+          onConfirm={() => {
+            onConfirm();
+            setIsShown(false);
+          }}
+          title={title}
+        >
+          {children}
+        </EvergreenDialog>
+      </Pane>
+      <div onClick={() => setIsShown(true)}>{trigger}</div>
+    </div>
+  );
+};
 
-    this.state = {
-      isShown: false
-    };
+Dialog.propTypes = {
+  children: PropTypes.node.isRequired,
+  confirmLabel: PropTypes.string.isRequired,
+  onConfirm: PropTypes.func,
+  title: PropTypes.string.isRequired,
+  trigger: PropTypes.node.isRequired
+};
 
-    this.close = this.close.bind(this);
-    this.open = this.open.bind(this);
-  }
-
-  close() {
-    this.setState({ isShown: false });
-  }
-
-  open() {
-    this.setState({ isShown: true });
-  }
-
-  render() {
-    return (
-      <div>
-        <Pane>
-          <EvergreenDialog
-            confirmLabel={this.props.confirmLabel}
-            isShown={this.state.isShown}
-            title={this.props.title}
-            onCloseComplete={this.close}
-          >
-            {this.props.children}
-          </EvergreenDialog>
-        </Pane>
-        <div onClick={this.open}>{this.props.trigger}</div>
-      </div>
-    );
-  }
-}
+Dialog.defaultProps = {
+  onConfirm: close => close()
+};
 
 export default Dialog;

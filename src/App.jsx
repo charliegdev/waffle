@@ -1,36 +1,36 @@
 import React from "react";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import { Button, Textarea, TextInput } from "evergreen-ui";
-import { Dialog } from "./components/dialog";
-import { Tasks } from "./pages";
-import { Topbar } from "./components/topbar";
 import "normalize.css/normalize.css";
 import "@blueprintjs/icons/lib/css/blueprint-icons.css";
 import "@blueprintjs/core/lib/css/blueprint.css";
 import styles from "./App.module.scss";
+import { actions } from "./redux";
+import { NewTaskDialog } from "./components/dialog";
+import { Tasks } from "./pages";
+import { Topbar } from "./components/topbar";
 
-const App = () => (
+const App = ({ createTask }) => (
   <Router>
     <div className={styles.container}>
       <Topbar>
-        <Dialog
-          confirmLabel="Confirm"
-          title="Add a new task"
-          trigger={
-            <Button appearance="primary" iconBefore="new-object">
-              New Task
-            </Button>
-          }
-        >
-          <TextInput name="task-title" placeholder="Title" width="100%" />
-          <br />
-          <br />
-          <Textarea name="task-description" placeholder="Description" />
-        </Dialog>
+        <NewTaskDialog onConfirm={createTask} />
       </Topbar>
       <Route path="/" component={Tasks} />
     </div>
   </Router>
 );
 
-export default App;
+App.propTypes = {
+  createTask: PropTypes.func.isRequired
+};
+
+const mapDispatch = dispatch => ({
+  createTask: (title, description) => dispatch(actions.tasks.createTask(title, description))
+});
+
+export default connect(
+  null,
+  mapDispatch
+)(App);
