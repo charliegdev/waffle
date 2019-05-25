@@ -1,0 +1,12 @@
+@import "dimensions";
+
+.container {
+  display: flex;
+  height: 100%;
+}
+
+@media (max-width: $mobile-breakpoint) {
+  .container {
+    display: block;
+  }
+}
