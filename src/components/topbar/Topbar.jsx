@@ -1,17 +1,19 @@
-import React from 'react';
-import { Menu, Icon } from 'antd';
-import { Link } from 'react-router-dom';
-import styles from './Topbar.module.scss';
+import React from "react";
+import { Link } from "react-router-dom";
+import { Button, Navbar } from "@blueprintjs/core";
 
 const Topbar = () => (
-  <Menu mode="horizontal" theme="dark" className={styles.container}>
-    <Menu.Item>
+  <Navbar fixedToTop className="bp3-dark">
+    <Navbar.Group>
+      <Navbar.Heading>Waffle</Navbar.Heading>
+      <Navbar.Divider />
       <Link to="/">
-        <Icon type="home" />
-        Board
+        <Button className="bp3-minimal" icon="home">
+          Home
+        </Button>
       </Link>
-    </Menu.Item>
-  </Menu>
+    </Navbar.Group>
+  </Navbar>
 );
 
 export default Topbar;
