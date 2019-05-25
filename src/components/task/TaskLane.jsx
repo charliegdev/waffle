@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import styles from "./TaskLane.module.scss";
 import { Icon } from "@blueprintjs/core";
 
-const TaskLane = ({ children, color, icon, laneTitle, lighterColor }) => (
+const TaskLane = ({ children, color, icon, title, lighterColor }) => (
   <div
     className={styles.container}
     style={{
@@ -19,7 +19,7 @@ const TaskLane = ({ children, color, icon, laneTitle, lighterColor }) => (
       <span className={styles.titleLeft}>
         <Icon icon={icon} iconSize={20} />
         &nbsp; &nbsp;
-        {laneTitle}
+        {title}
       </span>
       <span>{children.length}</span>
     </h2>
@@ -31,7 +31,7 @@ TaskLane.propTypes = {
   children: PropTypes.node.isRequired,
   color: PropTypes.string,
   icon: PropTypes.string.isRequired,
-  laneTitle: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
   lighterColor: PropTypes.string
 };
 

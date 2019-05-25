@@ -8,7 +8,7 @@ import { Task, TaskLane } from "../components/task";
 const Tasks = ({ tasks }) => (
   <div className={styles.container}>
     {Object.entries(status).map(([key, object], index) => (
-      <TaskLane laneTitle={object.title} key={object.title} {...object}>
+      <TaskLane key={object.title} {...object}>
         {tasks
           .filter(task => task.status === object.title)
           .map(task => (
