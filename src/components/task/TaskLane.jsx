@@ -21,7 +21,7 @@ const TaskLane = ({ children, color, laneTitle, lighterColor }) => (
         &nbsp; &nbsp;
         {laneTitle}
       </span>
-      <span>5</span>
+      <span>{children.length}</span>
     </h2>
     {children}
   </div>

@@ -1,23 +1,23 @@
 export const status = {
   TO_DO: {
-    title: "To Do",
     color: "#269898",
-    lighterColor: "#30BFBF"
+    lighterColor: "#30BFBF",
+    title: "To Do"
   },
   IN_PROGRESS: {
-    title: "In Progress",
     color: "#0088CC",
-    lighterColor: "#00AAFF"
+    lighterColor: "#00AAFF",
+    title: "In Progress"
   },
   READY_FOR_TEST: {
-    title: "Ready for Test",
     color: "#CC7F15",
-    lighterColor: "#FF9F1A"
+    lighterColor: "#FF9F1A",
+    title: "Ready for Test"
   },
   COMPLETED: {
-    title: "Completed",
     color: "#7265B8",
-    lighterColor: "#8F7EE6"
+    lighterColor: "#8F7EE6",
+    title: "Completed"
   }
 };
 
