@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import { Button } from "evergreen-ui";
+import { Button, Textarea, TextInput } from "evergreen-ui";
 import { Dialog } from "./components/dialog";
 import { Tasks } from "./pages";
 import { Topbar } from "./components/topbar";
@@ -22,7 +22,10 @@ const App = () => (
             </Button>
           }
         >
-          Some content
+          <TextInput name="task-title" placeholder="Title" width="100%" />
+          <br />
+          <br />
+          <Textarea name="task-description" placeholder="Description" />
         </Dialog>
       </Topbar>
       <Route path="/" component={Tasks} />
