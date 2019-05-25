@@ -16,5 +16,7 @@
     "sourceType": "module"
   },
   "plugins": ["react", "react-app"],
-  "rules": {}
+  "rules": {
+    "no-console": 1
+  }
 }

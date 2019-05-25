@@ -1,15 +1,16 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
+import styles from "./Tasks.module.scss";
 import { status } from "../constants";
 import { Task, TaskLane } from "../components/task";
 
 const Tasks = ({ tasks }) => (
-  <div>
-    {Object.entries(status).map(([key, stringLiteral], index) => (
-      <TaskLane laneTitle={stringLiteral} index={index} key={stringLiteral}>
+  <div className={styles.container}>
+    {Object.entries(status).map(([key, object], index) => (
+      <TaskLane color={object.color} laneTitle={object.title} index={index} key={object.title}>
         {tasks
-          .filter(task => task.status === stringLiteral)
+          .filter(task => task.status === object.title)
           .map(task => (
             <Task title={task.title} key={task.title}>
               {task.description}

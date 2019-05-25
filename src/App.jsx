@@ -5,7 +5,7 @@ import { Tasks } from "./pages";
 import "normalize.css/normalize.css";
 import "@blueprintjs/icons/lib/css/blueprint-icons.css";
 import "@blueprintjs/core/lib/css/blueprint.css";
-import styles from "./App.module.css";
+import styles from "./App.module.scss";
 
 const App = () => (
   <Router>

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { Button, Navbar } from "@blueprintjs/core";
 
 const Topbar = () => (
-  <Navbar fixedToTop className="bp3-dark">
+  <Navbar fixedToTop>
     <Navbar.Group>
       <Navbar.Heading>Waffle</Navbar.Heading>
       <Navbar.Divider />

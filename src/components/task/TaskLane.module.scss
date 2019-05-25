@@ -1,16 +1,31 @@
+@import "dimensions";
+
+.container {
+  float: left;
+  min-height: max-content;
+  padding-top: 50px;
+  overflow: auto;
+  height: 100%;
+  flex: 1;
+}
+
 .title {
+  color: white;
   font-weight: bold;
   text-align: center;
 }
 
-.container {
-  background-color: #eeeeee;
-  float: left;
-  min-height: max-content;
-  padding-top: 50px;
-  width: 350px;
-  margin-left: 10px;
-  position: fixed;
-  overflow: auto;
-  height: 100%;
+@media (max-width: $mobile-breakpoint) {
+  .container {
+    width: 100%;
+    height: auto;
+  }
+
+  .container:first-child {
+    padding-top: 50px;
+  }
+
+  .container {
+    padding-top: 0;
+  }
 }

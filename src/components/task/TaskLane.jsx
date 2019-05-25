@@ -1,12 +1,12 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import styles from './TaskLane.module.scss';
+import React from "react";
+import PropTypes from "prop-types";
+import styles from "./TaskLane.module.scss";
 
-const TaskLane = ({ children, laneTitle, index }) => (
+const TaskLane = ({ children, color, laneTitle }) => (
   <div
     className={styles.container}
     style={{
-      left: index * 360
+      backgroundColor: color
     }}
   >
     <h2 className={styles.title}>{laneTitle}</h2>
@@ -16,8 +16,12 @@ const TaskLane = ({ children, laneTitle, index }) => (
 
 TaskLane.propTypes = {
   children: PropTypes.node.isRequired,
-  index: PropTypes.number.isRequired,
+  color: PropTypes.string,
   laneTitle: PropTypes.string.isRequired
+};
+
+TaskLane.defaultProps = {
+  color: "#eeeeee"
 };
 
 export default TaskLane;
