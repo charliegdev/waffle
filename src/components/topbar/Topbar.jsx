@@ -1,9 +1,10 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { Button, Navbar } from "@blueprintjs/core";
 import styles from "./Topbar.module.scss";
 
-const Topbar = () => (
+const Topbar = ({ children }) => (
   <div className={styles.container}>
     <Navbar fixedToTop>
       <Navbar.Group>
@@ -15,8 +16,13 @@ const Topbar = () => (
           </Button>
         </Link>
       </Navbar.Group>
+      <Navbar.Group align="right">{children}</Navbar.Group>
     </Navbar>
   </div>
 );
+
+Topbar.propTypes = {
+  children: PropTypes.node.isRequired
+};
 
 export default Topbar;
