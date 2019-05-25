@@ -27,7 +27,11 @@ const DELETE = "waffle/tasks/DELETE";
  */
 const createTaskReducer = (state, action) => [
   ...state,
-  { ...action.payload, id: state[state.length - 1].id + 1, status: status.TO_DO.title }
+  {
+    id: state.length + 1,
+    ...action.payload,
+    status: status.TO_DO.title
+  }
 ];
 
 /**

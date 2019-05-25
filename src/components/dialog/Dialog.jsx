@@ -1,63 +1,41 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { Dialog as EvergreenDialog, Pane } from "evergreen-ui";
 
-class Dialog extends Component {
-  static propTypes = {
-    children: PropTypes.node.isRequired,
-    confirmLabel: PropTypes.string.isRequired,
-    onConfirm: PropTypes.func,
-    title: PropTypes.string.isRequired,
-    trigger: PropTypes.node.isRequired
-  };
+const Dialog = ({ children, confirmLabel, onConfirm, title, trigger }) => {
+  const [isShown, setIsShown] = useState(false);
 
-  static defaultProps = {
-    onConfirm: close => close()
-  };
+  return (
+    <div>
+      <Pane>
+        <EvergreenDialog
+          confirmLabel={confirmLabel}
+          isShown={isShown}
+          onCloseComplete={() => setIsShown(false)}
+          onConfirm={() => {
+            onConfirm();
+            setIsShown(false);
+          }}
+          title={title}
+        >
+          {children}
+        </EvergreenDialog>
+      </Pane>
+      <div onClick={() => setIsShown(true)}>{trigger}</div>
+    </div>
+  );
+};
 
-  constructor(props) {
-    super(props);
+Dialog.propTypes = {
+  children: PropTypes.node.isRequired,
+  confirmLabel: PropTypes.string.isRequired,
+  onConfirm: PropTypes.func,
+  title: PropTypes.string.isRequired,
+  trigger: PropTypes.node.isRequired
+};
 
-    this.state = {
-      isShown: false
-    };
-
-    this.onConfirm = this.onConfirm.bind(this);
-    this.close = this.close.bind(this);
-    this.open = this.open.bind(this);
-  }
-
-  onConfirm() {
-    this.props.onConfirm();
-    this.close();
-  }
-
-  close() {
-    this.setState({ isShown: false });
-  }
-
-  open() {
-    this.setState({ isShown: true });
-  }
-
-  render() {
-    return (
-      <div>
-        <Pane>
-          <EvergreenDialog
-            confirmLabel={this.props.confirmLabel}
-            isShown={this.state.isShown}
-            onCloseComplete={this.close}
-            onConfirm={this.onConfirm}
-            title={this.props.title}
-          >
-            {this.props.children}
-          </EvergreenDialog>
-        </Pane>
-        <div onClick={this.open}>{this.props.trigger}</div>
-      </div>
-    );
-  }
-}
+Dialog.defaultProps = {
+  onConfirm: close => close()
+};
 
 export default Dialog;
