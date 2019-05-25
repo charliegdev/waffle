@@ -8,10 +8,16 @@ const NewTaskDialog = ({ onConfirm }) => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
 
+  const confirmThenDelete = () => {
+    onConfirm(title, description);
+    setTitle("");
+    setDescription("");
+  };
+
   return (
     <Dialog
       confirmLabel="Confirm"
-      onConfirm={() => onConfirm(title, description)}
+      onConfirm={confirmThenDelete}
       title="Add a new task"
       trigger={
         <Button appearance="primary" iconBefore="new-object">
