@@ -23,12 +23,9 @@ const DELETE = "waffle/tasks/DELETE";
  * Create a new task and put it at the end of the existing list of tasks.
  * @param {Task[]} state
  * @param {Action} action
- * @returns {Task[]}
+ * @returns {Task[]} - The new tasks
  */
-const createTaskReducer = (state, action) => ({
-  ...state,
-  ...action.payload
-});
+const createTaskReducer = (state, action) => [...state, action.payload];
 
 /**
  * Check if the current task has the same id as the id in payload. If yes, remove it.
@@ -78,6 +75,7 @@ export const createTask = newTask => ({
 /**
  * Action creator for deleting an existing task.
  * @param {number} id
+ * @return {Action}
  */
 export const deleteTask = id => ({
   type: DELETE,
