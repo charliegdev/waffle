@@ -1,5 +1,5 @@
 // @ts-check
-import { mockTasks } from "../../constants";
+import { mockTasks, status } from "../../constants";
 
 const CREATE = "waffle/tasks/CREATE";
 const UPDATE = "waffle/tasks/UPDATE";
@@ -25,7 +25,10 @@ const DELETE = "waffle/tasks/DELETE";
  * @param {Action} action
  * @returns {Task[]} - The new tasks
  */
-const createTaskReducer = (state, action) => [...state, action.payload];
+const createTaskReducer = (state, action) => [
+  ...state,
+  { ...action.payload, id: state[state.length - 1].id + 1, status: status.TO_DO.title }
+];
 
 /**
  * Check if the current task has the same id as the id in payload. If yes, remove it.
@@ -64,12 +67,16 @@ export default (state = mockTasks, action) => {
 
 /**
  * Action creator for creating a new task.
- * @param {Task} newTask
+ * @param {string} title
+ * @param {string} description
  * @returns {Action}
  */
-export const createTask = newTask => ({
+export const createTask = (title, description) => ({
   type: CREATE,
-  payload: newTask
+  payload: {
+    title,
+    description
+  }
 });
 
 /**
