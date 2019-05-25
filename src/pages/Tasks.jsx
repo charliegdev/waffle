@@ -24,10 +24,10 @@ const Tasks = ({ tasks }) => (
 Tasks.propTypes = {
   tasks: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      title: PropTypes.string.isRequired,
       description: PropTypes.string.isRequired,
-      status: PropTypes.string.isRequired
+      id: PropTypes.number.isRequired,
+      status: PropTypes.string.isRequired,
+      title: PropTypes.string.isRequired
     })
   )
 };
