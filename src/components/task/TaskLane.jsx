@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styles from "./TaskLane.module.scss";
+import { Icon } from "@blueprintjs/core";
 
 const TaskLane = ({ children, color, laneTitle }) => (
   <div
@@ -9,7 +10,14 @@ const TaskLane = ({ children, color, laneTitle }) => (
       backgroundColor: color
     }}
   >
-    <h2 className={styles.title}>{laneTitle}</h2>
+    <h2 className={styles.title}>
+      <span className={styles.titleLeft}>
+        <Icon icon="comment" iconSize={20} />
+        &nbsp; &nbsp;
+        {laneTitle}
+      </span>
+      <span>5</span>
+    </h2>
     {children}
   </div>
 );
