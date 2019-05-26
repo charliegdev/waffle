@@ -1,4 +1,3 @@
-// @ts-check
 import { mockTasks, status } from "../../constants";
 
 const CREATE = "waffle/tasks/CREATE";

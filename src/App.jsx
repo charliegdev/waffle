@@ -26,7 +26,12 @@ App.propTypes = {
   createTask: PropTypes.func.isRequired
 };
 
+/** @param {function} dispatch */
 const mapDispatch = dispatch => ({
+  /**
+   * @param {string} title
+   * @param {string} description
+   */
   createTask: (title, description) => dispatch(actions.tasks.createTask(title, description))
 });
 
