@@ -2,19 +2,18 @@ import React from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import styles from "./Tasks.module.scss";
+import { actions } from "../redux";
 import { status } from "../constants";
 import { Task, TaskLane } from "../components/task";
 
-const Tasks = ({ tasks }) => (
+const Tasks = ({ changeStatus, tasks }) => (
   <div className={styles.container}>
     {Object.entries(status).map(([key, object], index) => (
       <TaskLane key={object.title} {...object}>
         {tasks
           .filter(task => task.status === object.title)
           .map(task => (
-            <Task title={task.title} key={task.title}>
-              {task.description}
-            </Task>
+            <Task changeStatus={changeStatus} key={task.title} task={task} />
           ))}
       </TaskLane>
     ))}
@@ -40,4 +39,11 @@ const mapState = ({ tasks }) => ({
   tasks
 });
 
-export default connect(mapState)(Tasks);
+const mapDispatch = dispatch => ({
+  changeStatus: modifiedTask => dispatch(actions.tasks.updateTask(modifiedTask))
+});
+
+export default connect(
+  mapState,
+  mapDispatch
+)(Tasks);
