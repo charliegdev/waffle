@@ -13,7 +13,7 @@ const SelectMenu = ({ initial, title, options, onSelect }) => {
   return (
     <EvergreenSelectMenu title={title} options={options} selected={selected} onSelect={selectItem}>
       <Button iconBefore="caret-left" iconAfter="caret-right" intent="success">
-        {selected || "Select..."}
+        {selected || title}
       </Button>
     </EvergreenSelectMenu>
   );
@@ -32,7 +32,8 @@ SelectMenu.propTypes = {
 };
 
 SelectMenu.defaultProps = {
-  initial: null
+  initial: null,
+  title: "Select..."
 };
 
 export default SelectMenu;
