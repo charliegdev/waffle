@@ -10,15 +10,18 @@ const options = Object.entries(status).map(([key, { title }]) => ({
   value: title
 }));
 
-const Task = ({ title, children }) => (
+const Task = ({ status, title, children }) => (
   <Card interactive elevation={Elevation.TWO} className={styles.container}>
     <H5 className={styles.title}>{title}</H5>
     {children}
-    <SelectMenu options={options} onSelect={item => console.log(item)} />
+    <div className={styles.menuButton}>
+      <SelectMenu initial={status} options={options} onSelect={item => console.log(item)} />
+    </div>
   </Card>
 );
 
 Task.propTypes = {
+  status: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   children: PropTypes.node.isRequired
 };

@@ -12,7 +12,7 @@ const Tasks = ({ tasks }) => (
         {tasks
           .filter(task => task.status === object.title)
           .map(task => (
-            <Task title={task.title} key={task.title}>
+            <Task title={task.title} key={task.title} status={task.status}>
               {task.description}
             </Task>
           ))}
