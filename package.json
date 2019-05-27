@@ -71,7 +71,7 @@
       "react-app-polyfill/jsdom"
     ],
     "testMatch": [
-      "<rootDir>/src/App.test.js",
+      "<rootDir>/src/App.test.jsx",
       "<rootDir>/src/components/**/*.(spec|test).{js,jsx,ts,tsx}"
     ],
     "testEnvironment": "jsdom",
@@ -124,6 +124,7 @@
     "jest-pnp-resolver": "1.0.2",
     "jest-resolve": "23.6.0",
     "jest-watch-typeahead": "^0.2.1",
-    "react-dev-utils": "^8.0.0"
+    "react-dev-utils": "^8.0.0",
+    "react-test-renderer": "^16.8.6"
   }
 }
