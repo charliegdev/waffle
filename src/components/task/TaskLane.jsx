@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
-import styles from "./TaskLane.module.scss";
 import { Icon } from "@blueprintjs/core";
+import styles from "./TaskLane.module.scss";
 
 const TaskLane = ({ children, color, icon, title, lighterColor }) => (
   <div
