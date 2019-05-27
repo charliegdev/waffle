@@ -1,1 +1,5 @@
-console.log("test");
+describe("Dialog", () => {
+  it("renders without crashing", () => {
+    console.log("OK");
+  });
+});
