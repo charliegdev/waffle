@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { Button } from "evergreen-ui";
 import { Card, Elevation, H5 } from "@blueprintjs/core";
 import styles from "./Task.module.scss";
 import { SelectMenu } from "../select-menu";
@@ -10,11 +11,11 @@ const options = Object.entries(status).map(([key, { title }]) => ({
   value: title
 }));
 
-const Task = ({ changeStatus, task }) => (
+const Task = ({ changeStatus, deleteTask, task }) => (
   <Card interactive elevation={Elevation.TWO} className={styles.container}>
     <H5 className={styles.title}>{task.title}</H5>
     {task.description}
-    <div className={styles.menuButton}>
+    <div className={styles.buttons}>
       <SelectMenu
         initial={task.status}
         options={options}
@@ -25,12 +26,16 @@ const Task = ({ changeStatus, task }) => (
           })
         }
       />
+      <Button className={styles.deleteButton} intent="danger" onClick={() => deleteTask(task.id)}>
+        Delete
+      </Button>
     </div>
   </Card>
 );
 
 Task.propTypes = {
   changeStatus: PropTypes.func.isRequired,
+  deleteTask: PropTypes.func.isRequired,
   task: PropTypes.shape({
     description: PropTypes.string.isRequired,
     id: PropTypes.number.isRequired,

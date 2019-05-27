@@ -6,14 +6,14 @@ import { actions } from "../redux";
 import { status } from "../constants";
 import { Task, TaskLane } from "../components/task";
 
-const Tasks = ({ changeStatus, tasks }) => (
+const Tasks = ({ changeStatus, deleteTask, tasks }) => (
   <div className={styles.container}>
     {Object.entries(status).map(([key, object], index) => (
       <TaskLane key={object.title} {...object}>
         {tasks
           .filter(task => task.status === object.title)
           .map(task => (
-            <Task changeStatus={changeStatus} key={task.title} task={task} />
+            <Task changeStatus={changeStatus} deleteTask={deleteTask} key={task.title} task={task} />
           ))}
       </TaskLane>
     ))}
@@ -21,6 +21,8 @@ const Tasks = ({ changeStatus, tasks }) => (
 );
 
 Tasks.propTypes = {
+  changeStatus: PropTypes.func.isRequired,
+  deleteTask: PropTypes.func.isRequired,
   tasks: PropTypes.arrayOf(
     PropTypes.shape({
       description: PropTypes.string.isRequired,
@@ -40,7 +42,8 @@ const mapState = ({ tasks }) => ({
 });
 
 const mapDispatch = dispatch => ({
-  changeStatus: modifiedTask => dispatch(actions.tasks.updateTask(modifiedTask))
+  changeStatus: modifiedTask => dispatch(actions.tasks.updateTask(modifiedTask)),
+  deleteTask: id => dispatch(actions.tasks.deleteTask(id))
 });
 
 export default connect(
