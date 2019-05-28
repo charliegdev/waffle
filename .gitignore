@@ -24,3 +24,4 @@ yarn-error.log*
 
 .env
 src/__snapshots__
+src/components/**/__snapshots__
