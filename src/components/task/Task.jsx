@@ -12,7 +12,13 @@ const options = Object.entries(status).map(([key, { title }]) => ({
 }));
 
 const Task = ({ changeStatus, deleteTask, task }) => (
-  <Card interactive elevation={Elevation.TWO} className={styles.container}>
+  <Card
+    draggable
+    onDrag={event => console.log(event)}
+    interactive
+    elevation={Elevation.TWO}
+    className={styles.container}
+  >
     <H5 className={styles.title}>{task.title}</H5>
     {task.description}
     <div className={styles.buttons}>
