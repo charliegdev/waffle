@@ -1,8 +1,6 @@
 import React from "react";
-import ReactDOM from "react-dom";
-import renderer from "react-test-renderer";
 import { Button } from "evergreen-ui";
-import { renderWithoutCrashing, renderSameSnapshot } from "../test-utils";
+import { routineTests } from "../test-utils";
 import Dialog from "./Dialog";
 
 describe("Dialog", () => {
@@ -21,6 +19,5 @@ describe("Dialog", () => {
     );
   });
 
-  renderWithoutCrashing("Dialog", dialog);
-  renderSameSnapshot("Dialog", dialog);
+  routineTests(dialog);
 });
