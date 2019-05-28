@@ -14,7 +14,14 @@ const options = Object.entries(status).map(([key, { title }]) => ({
 const Task = ({ changeStatus, deleteTask, task }) => (
   <Card
     draggable
-    onDrag={event => console.log(event)}
+    onDrag={event => {
+      // Some elements have undesired default drag behaviour. Prevent that.
+      event.preventDefault();
+      changeStatus({
+        ...task,
+        status: "DRAGGED"
+      });
+    }}
     interactive
     elevation={Elevation.TWO}
     className={styles.container}
