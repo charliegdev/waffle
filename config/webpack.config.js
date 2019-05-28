@@ -77,7 +77,7 @@ module.exports = function(webpackEnv) {
         ),
       },
       {
-        loader: require.resolve('css-loader'),
+        loader: 'typings-for-css-modules-loader',
         options: cssOptions,
       },
       {
@@ -440,6 +440,7 @@ module.exports = function(webpackEnv) {
                   importLoaders: 2,
                   sourceMap: isEnvProduction && shouldUseSourceMap,
                   modules: true,
+                  namedExport: true,
                   getLocalIdent: getCSSModuleLocalIdent,
                 },
                 'sass-loader'

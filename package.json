@@ -126,6 +126,7 @@
     "jest-resolve": "23.6.0",
     "jest-watch-typeahead": "^0.2.1",
     "react-dev-utils": "^8.0.0",
-    "react-test-renderer": "^16.8.6"
+    "react-test-renderer": "^16.8.6",
+    "typings-for-css-modules-loader": "^1.7.0"
   }
 }
