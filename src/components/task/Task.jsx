@@ -12,7 +12,7 @@ const enableDrag = event => {
   event.dataTransfer.setData("text/plain", "some_dummy_data");
 };
 
-const Task = ({ updateTask, deleteTask, task }) => {
+const Task = ({ deleteTask, task, updateTask }) => {
   // The 'drag' event is fired several times per second; don't want to call our redux functions at the same frequency.
   const updateDebounced = debounce(() => updateTask({ ...task, dragging: true }), 500, {
     leading: true,
@@ -56,9 +56,9 @@ Task.propTypes = {
 /** @typedef { import('../../redux/modules/tasks').Task } TaskProps */
 
 /**
- * a Task can have many props, but we only care about these 4 (e.g., we don't care about 'dragging')
- * This doesn't scale very well when we change the implementation of Task in the future, but for now the readability gain
- * is worth it.
+ * A task object can have many properties, but we only care about these 4 (e.g., we don't care about 'dragging')
+ * This doesn't scale very well when we change the implementation of Task in the future,
+ * but for now the readability gain is worth it.
  * @param {{ task: TaskProps}} prevProps
  * @param {{ task: TaskProps}} nextProps
  * @returns {boolean}
@@ -66,4 +66,5 @@ Task.propTypes = {
 const isSameId = (prevProps, nextProps) =>
   ["description", "id", "status", "title"].every(property => prevProps.task[property] === nextProps.task[property]);
 
+// Without React.memo, this component will cause an update feedback loop with Redux, that causes rerender several times per second.
 export default React.memo(Task, isSameId);

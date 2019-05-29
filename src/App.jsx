@@ -1,8 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { bindActionCreators } from "redux";
-import { connect } from "react-redux";
 import { BrowserRouter as Router, Route } from "react-router-dom";
+import { connect } from "react-redux";
 import "normalize.css/normalize.css";
 import "@blueprintjs/icons/lib/css/blueprint-icons.css";
 import "@blueprintjs/core/lib/css/blueprint.css";
