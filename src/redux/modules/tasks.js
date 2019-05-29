@@ -7,6 +7,7 @@ const DELETE = "waffle/tasks/DELETE";
 
 /**
  * @typedef {Object} Task
+ * @property {boolean} dragging
  * @property {number} id
  * @property {string} description
  * @property {string} status
@@ -27,10 +28,11 @@ const DELETE = "waffle/tasks/DELETE";
  */
 const acceptTaskReducer = (state, action) =>
   state.map(task =>
-    task.status === "DRAGGED"
+    task.dragging
       ? {
           ...task,
-          status: action.payload.status
+          status: action.payload.status,
+          dragging: false
         }
       : task
   );
@@ -44,8 +46,9 @@ const acceptTaskReducer = (state, action) =>
 const createTaskReducer = (state, action) => [
   ...state,
   {
-    id: state.length + 1,
     ...action.payload,
+    dragging: false,
+    id: state.length + 1,
     status: status.TO_DO.title
   }
 ];
