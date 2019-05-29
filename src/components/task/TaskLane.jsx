@@ -8,7 +8,10 @@ import styles from "./TaskLane.module.scss";
 import { actions } from "../../redux";
 
 const TaskLane = ({ acceptTask, children, color, icon, title, lighterColor }) => {
-  // By setting a .drag class which says pointer-events:none; we prevent dragEnter, dragLeave and dragOver to be repeatedly fired many times
+  /**
+   * By setting a `.drag` class which says `pointer-events:none;`
+   * we prevent `dragEnter`, `dragLeave` and `dragOver` to be repeatedly fired many times
+   */
   const [dragClass, setDragClass] = useState("");
 
   return (
@@ -22,16 +25,9 @@ const TaskLane = ({ acceptTask, children, color, icon, title, lighterColor }) =>
         acceptTask(title);
         setDragClass("");
       }}
-      style={{
-        backgroundColor: color
-      }}
+      style={{ backgroundColor: color }}
     >
-      <h2
-        className={styles.title}
-        style={{
-          backgroundColor: lighterColor
-        }}
-      >
+      <h2 className={styles.title} style={{ backgroundColor: lighterColor }}>
         <span className={styles.titleLeft}>
           <Icon icon={icon} iconSize={20} />
           &nbsp; &nbsp;

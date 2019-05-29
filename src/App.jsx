@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import "normalize.css/normalize.css";
@@ -26,14 +27,7 @@ App.propTypes = {
   createTask: PropTypes.func.isRequired
 };
 
-/** @param {function} dispatch */
-const mapDispatch = dispatch => ({
-  /**
-   * @param {string} title
-   * @param {string} description
-   */
-  createTask: (title, description) => dispatch(actions.tasks.createTask(title, description))
-});
+const mapDispatch = dispatch => bindActionCreators(actions.tasks, dispatch);
 
 export default connect(
   null,
