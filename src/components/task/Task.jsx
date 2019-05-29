@@ -34,12 +34,9 @@ const Task = ({ updateTask, deleteTask, task }) => {
     >
       <H5 className={styles.title}>{task.title}</H5>
       {task.description}
-      <div className={styles.buttons}>
-        <p>Status: {task.status}</p>
-        <Button className={styles.deleteButton} intent="danger" onClick={() => deleteTask(task.id)}>
-          Delete
-        </Button>
-      </div>
+      <Button className={styles.deleteButton} intent="danger" onClick={() => deleteTask(task.id)}>
+        Delete
+      </Button>
     </Card>
   );
 };
