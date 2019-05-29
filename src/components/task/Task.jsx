@@ -11,16 +11,22 @@ const options = Object.entries(status).map(([key, { title }]) => ({
   value: title
 }));
 
-const Task = ({ changeStatus, deleteTask, task }) => (
+const Task = ({ updateTask, deleteTask, task }) => (
   <Card
     draggable
     onDrag={event => {
       // Some elements have undesired default drag behaviour. Prevent that.
       event.preventDefault();
-      changeStatus({
+      updateTask({
         ...task,
-        status: "DRAGGED"
+        dragging: true
       });
+    }}
+    onDragStart={event => {
+      event.stopPropagation();
+      event.dataTransfer.effectAllowed = "move";
+      // Some browsers such as Firefox requires dummy data to enable dragging
+      event.dataTransfer.setData("text/plain", "some_dummy_data");
     }}
     interactive
     elevation={Elevation.TWO}
@@ -33,7 +39,7 @@ const Task = ({ changeStatus, deleteTask, task }) => (
         initial={task.status}
         options={options}
         onSelect={newStatus =>
-          changeStatus({
+          updateTask({
             ...task,
             status: newStatus
           })
@@ -47,14 +53,14 @@ const Task = ({ changeStatus, deleteTask, task }) => (
 );
 
 Task.propTypes = {
-  changeStatus: PropTypes.func.isRequired,
   deleteTask: PropTypes.func.isRequired,
   task: PropTypes.shape({
     description: PropTypes.string.isRequired,
     id: PropTypes.number.isRequired,
     status: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired
-  }).isRequired
+  }).isRequired,
+  updateTask: PropTypes.func.isRequired
 };
 
 export default Task;

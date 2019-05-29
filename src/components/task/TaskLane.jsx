@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import { Icon } from "@blueprintjs/core";
 import styles from "./TaskLane.module.scss";
@@ -9,7 +10,10 @@ const TaskLane = ({ acceptTask, children, color, icon, title, lighterColor }) =>
   <div
     className={styles.container}
     onDragOver={event => event.preventDefault()}
-    onDrop={acceptTask}
+    onDrop={event => {
+      event.preventDefault();
+      acceptTask(title);
+    }}
     style={{
       backgroundColor: color
     }}
@@ -45,9 +49,7 @@ TaskLane.defaultProps = {
   lighterColor: "#eeeeee"
 };
 
-const mapDispatch = (dispatch, ownProps) => ({
-  acceptTask: () => dispatch(actions.tasks.acceptTask(ownProps.title))
-});
+const mapDispatch = dispatch => bindActionCreators(actions.tasks, dispatch);
 
 export default connect(
   null,
