@@ -11,6 +11,13 @@ const options = Object.entries(status).map(([key, { title }]) => ({
   value: title
 }));
 
+const enableDrag = event => {
+  event.stopPropagation();
+  event.dataTransfer.effectAllowed = "move";
+  // Some browsers such as Firefox requires dummy data to enable dragging
+  event.dataTransfer.setData("text/plain", "some_dummy_data");
+};
+
 const Task = ({ updateTask, deleteTask, task }) => (
   <Card
     draggable
@@ -22,12 +29,7 @@ const Task = ({ updateTask, deleteTask, task }) => (
         dragging: true
       });
     }}
-    onDragStart={event => {
-      event.stopPropagation();
-      event.dataTransfer.effectAllowed = "move";
-      // Some browsers such as Firefox requires dummy data to enable dragging
-      event.dataTransfer.setData("text/plain", "some_dummy_data");
-    }}
+    onDragStart={enableDrag}
     interactive
     elevation={Elevation.TWO}
     className={styles.container}
