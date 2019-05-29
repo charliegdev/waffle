@@ -1,7 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
 import { BrowserRouter as Router, Route } from "react-router-dom";
+import { connect } from "react-redux";
 import "normalize.css/normalize.css";
 import "@blueprintjs/icons/lib/css/blueprint-icons.css";
 import "@blueprintjs/core/lib/css/blueprint.css";
@@ -26,14 +27,7 @@ App.propTypes = {
   createTask: PropTypes.func.isRequired
 };
 
-/** @param {function} dispatch */
-const mapDispatch = dispatch => ({
-  /**
-   * @param {string} title
-   * @param {string} description
-   */
-  createTask: (title, description) => dispatch(actions.tasks.createTask(title, description))
-});
+const mapDispatch = dispatch => bindActionCreators(actions.tasks, dispatch);
 
 export default connect(
   null,

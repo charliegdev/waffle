@@ -10311,6 +10311,11 @@ url@^0.11.0:
     punycode "1.3.2"
     querystring "0.2.0"
 
+use-trace-update@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/use-trace-update/-/use-trace-update-1.2.0.tgz#438a270e9cdde29e81e92f1e9b778b6095fc1011"
+  integrity sha512-DtLZ9dI2axENvDY4JZpchfYsEhN7zF+iz3sb9PzK90rmF6cMRSz5BUI4OXH5ZlQ+G8emLFF9wkvFQ3o0Ydk0RQ==
+
 use@^3.1.0:
   version "3.1.1"
   resolved "https://registry.yarnpkg.com/use/-/use-3.1.1.tgz#d50c8cac79a19fbc20f2911f56eb973f4e10070f"

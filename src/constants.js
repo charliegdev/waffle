@@ -27,37 +27,43 @@ export const status = {
 
 export const mockTasks = [
   {
-    id: 1,
-    title: "Review iPhone XS Max",
     description: "Review the newest flagship iPhone.",
-    status: status.TO_DO.title
+    dragging: false,
+    id: 1,
+    status: status.TO_DO.title,
+    title: "Review iPhone XS Max"
   },
   {
-    id: 2,
-    title: "Review iPhone XR",
     description: 'Review the newest "budget-friendly" iPhone.',
-    status: status.TO_DO.title
+    dragging: false,
+    id: 2,
+    status: status.TO_DO.title,
+    title: "Review iPhone XR"
   },
   {
-    id: 3,
-    title: "Review Samsung Galaxy S10 Plus",
     description: "Review the newest Samsung flagship",
-    status: status.IN_PROGRESS.title
+    dragging: false,
+    id: 3,
+    status: status.IN_PROGRESS.title,
+    title: "Review Samsung Galaxy S10 Plus"
   },
   {
-    id: 4,
-    title: "Review Google Pixel 3 XL",
     description: "Can the Google's flagship compete with Apple and Samsung?",
-    status: status.IN_PROGRESS.title
+    dragging: false,
+    id: 4,
+    status: status.IN_PROGRESS.title,
+    title: "Review Google Pixel 3 XL"
   },
   {
     id: 5,
+    dragging: false,
     title: "Review OnePlus 6T",
     description: 'How much are we giving up for a "flagship killer"?',
     status: status.COMPLETED.title
   },
   {
     id: 6,
+    dragging: false,
     title: "Review BlackBerry KEY2",
     description: "Are physical keyboards still relevant, and worth the tradeoffs?",
     status: status.COMPLETED.title

@@ -1,11 +1,13 @@
 import { mockTasks, status } from "../../constants";
 
+const ACCEPT = "waffle/tasks/ACCEPT"; // Fired when a Task is dropped in a TaskLane.
 const CREATE = "waffle/tasks/CREATE";
 const UPDATE = "waffle/tasks/UPDATE";
 const DELETE = "waffle/tasks/DELETE";
 
 /**
  * @typedef {Object} Task
+ * @property {boolean} dragging
  * @property {number} id
  * @property {string} description
  * @property {string} status
@@ -15,8 +17,25 @@ const DELETE = "waffle/tasks/DELETE";
 /**
  * @typedef {Object} Action
  * @property {string} type - The type of an action, such as 'waffle/tasks/CREATE'
- * @property {Object} payload
+ * @property {Object=} payload
  */
+
+/**
+ * Find the task with "DRAGGED" status, and change it to the new status.
+ * @param {Task[]} state
+ * @param {Action} action
+ * @returns {Task[]}
+ */
+const acceptTaskReducer = (state, action) =>
+  state.map(task =>
+    task.dragging
+      ? {
+          ...task,
+          status: action.payload.status,
+          dragging: false
+        }
+      : task
+  );
 
 /**
  * Create a new task and put it at the end of the existing list of tasks.
@@ -27,8 +46,9 @@ const DELETE = "waffle/tasks/DELETE";
 const createTaskReducer = (state, action) => [
   ...state,
   {
-    id: state.length + 1,
     ...action.payload,
+    dragging: false,
+    id: state.length + 1,
     status: status.TO_DO.title
   }
 ];
@@ -57,6 +77,8 @@ const updateTaskReducer = (state, action) => state.map(task => (task.id === acti
  */
 export default (state = mockTasks, action) => {
   switch (action.type) {
+    case ACCEPT:
+      return acceptTaskReducer(state, action);
     case CREATE:
       return createTaskReducer(state, action);
     case DELETE:
@@ -67,6 +89,18 @@ export default (state = mockTasks, action) => {
       return state;
   }
 };
+
+/**
+ * Action creator for dropping a Task in a TaskLane
+ * @params {string} destinationStatus - The status to be dropped onto
+ * @returns {Action}
+ */
+export const acceptTask = destinationStatus => ({
+  type: ACCEPT,
+  payload: {
+    status: destinationStatus
+  }
+});
 
 /**
  * Action creator for creating a new task.

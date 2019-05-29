@@ -1,21 +1,22 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { bindActionCreators } from "redux";
+import { connect } from "react-redux";
 import { Icon } from "@blueprintjs/core";
 import styles from "./TaskLane.module.scss";
+import { actions } from "../../redux";
 
-const TaskLane = ({ children, color, icon, title, lighterColor }) => (
+const TaskLane = ({ acceptTask, children, color, icon, lighterColor, title }) => (
   <div
     className={styles.container}
-    style={{
-      backgroundColor: color
+    onDragOver={event => event.preventDefault()}
+    onDrop={event => {
+      event.preventDefault();
+      acceptTask(title);
     }}
+    style={{ backgroundColor: color }}
   >
-    <h2
-      className={styles.title}
-      style={{
-        backgroundColor: lighterColor
-      }}
-    >
+    <h2 className={styles.title} style={{ backgroundColor: lighterColor }}>
       <span className={styles.titleLeft}>
         <Icon icon={icon} iconSize={20} />
         &nbsp; &nbsp;
@@ -28,6 +29,7 @@ const TaskLane = ({ children, color, icon, title, lighterColor }) => (
 );
 
 TaskLane.propTypes = {
+  acceptTask: PropTypes.func.isRequired,
   children: PropTypes.node.isRequired,
   color: PropTypes.string,
   icon: PropTypes.string.isRequired,
@@ -40,4 +42,9 @@ TaskLane.defaultProps = {
   lighterColor: "#eeeeee"
 };
 
-export default TaskLane;
+const mapDispatch = dispatch => bindActionCreators(actions.tasks, dispatch);
+
+export default connect(
+  null,
+  mapDispatch
+)(TaskLane);

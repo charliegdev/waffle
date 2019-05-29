@@ -10,7 +10,7 @@ describe("TaskLane", () => {
     taskLane = (
       <TaskLane icon="pulse" title="In Progress">
         <Task
-          changeStatus={emptyFiller}
+          updateTask={emptyFiller}
           deleteTask={emptyFiller}
           task={{
             id: 1,
@@ -20,7 +20,7 @@ describe("TaskLane", () => {
           }}
         />
         <Task
-          changeStatus={emptyFiller}
+          updateTask={emptyFiller}
           deleteTask={emptyFiller}
           task={{
             id: 2,
