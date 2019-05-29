@@ -7,14 +7,14 @@ import { actions } from "../redux";
 import { status } from "../constants";
 import { Task, TaskLane } from "../components/task";
 
-const Tasks = ({ updateTask, deleteTask, tasks }) => (
+const Tasks = ({ deleteTask, tasks, updateTask }) => (
   <div className={styles.container}>
-    {Object.entries(status).map(([key, object], index) => (
+    {Object.entries(status).map(([key, object]) => (
       <TaskLane key={object.title} {...object}>
         {tasks
           .filter(task => task.status === object.title)
           .map(task => (
-            <Task updateTask={updateTask} deleteTask={deleteTask} key={task.title} task={task} />
+            <Task deleteTask={deleteTask} key={task.title} task={task} updateTask={updateTask} />
           ))}
       </TaskLane>
     ))}
