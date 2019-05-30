@@ -3,7 +3,6 @@
  * https://github.com/erikras/ducks-modular-redux
  */
 import axios from "axios";
-
 import { status } from "../../constants";
 
 /**
@@ -13,9 +12,14 @@ const ACCEPT = "waffle/tasks/ACCEPT"; // Fired when a Task is dropped in a TaskL
 const CREATE = "waffle/tasks/CREATE";
 const CREATE_SUCCESS = "waffle/task/CREATE_SUCCESS";
 
+// Both DELETE and UPDATE performs client side changes first, then inform the server. Thus no *_SUCCESS actions for these 2.
 const DELETE = "waffle/tasks/DELETE";
 
-// This could be applied to all network call, such as FETCH, UPDATE and DELETE.
+/**
+ * Shared between all CRUD actions, such as `ACCEPT`, `CREATE`, `DELETE`, `FETCH` & `UPDATE`.
+ * TODO: We could revert changes whenever a `FAILED` happens, but that requires more planning.
+ * TODO: Show a toaster whenever `FAILED` is triggered.
+ */
 const FAILED = "waffle/tasks/FAILED";
 
 const FETCH = "waffle/tasks/FETCH";
@@ -45,14 +49,14 @@ const UPDATE = "waffle/tasks/UPDATE";
  * @typedef {Object} State
  * @property {Object} error
  * @property {Task[]} list
- * @property {boolean} loading // Would use this to determine whether to show a spinner or loading bar, but don't bother now.
+ * @property {boolean} loading // TODO: Use this to determine whether to show a spinner or loading bar
  */
 
 /**
  * **Slice reducers**
  */
 /**
- * Find the task with "DRAGGED" status, and change it to the new status.
+ * Triggered by dropping a task into a lane. See `acceptTask` action creator below.
  * @param {State} state
  * @param {Action} action
  * @returns {State}
@@ -63,7 +67,7 @@ const acceptTaskReducer = (state, action) => ({
 });
 
 /**
- * Create a new task and put it at the end of the existing list of tasks.
+ * Wait for the server to create a task.
  * @param {State} state
  * @returns {State}
  */
@@ -73,9 +77,17 @@ const createTaskReducer = state => ({
   loading: true
 });
 
+/**
+ * Get the new task created / validated by the server and put it at the end of the existing list of tasks.
+ * @param {State} state
+ * @param {Action} action
+ * @returns {State}
+ */
 const createTaskSuccessReducer = (state, action) => ({
   ...state,
-  list: [...state.list, action.payload]
+  error: null,
+  list: [...state.list, action.payload],
+  loading: false
 });
 
 /**
@@ -97,7 +109,8 @@ const deleteTaskReducer = (state, action) => ({
  */
 const failedReducer = (state, action) => ({
   ...state,
-  error: action.payload
+  error: action.payload,
+  loading: false
 });
 
 /**
@@ -189,6 +202,7 @@ const createTaskSuccess = newTask => ({
 /**
  * Called whenever any error is returned from an API call.
  * @param {Object} error
+ * @returns {Action}
  */
 const failed = error => ({
   type: FAILED,
@@ -198,6 +212,7 @@ const failed = error => ({
 /**
  * Called once `GET /tasks` succeeds
  * @param {Task[]} tasks
+ * @returns {Action}
  */
 const fetchSuccess = tasks => ({
   type: FETCH_SUCCESS,
@@ -208,14 +223,18 @@ const fetchSuccess = tasks => ({
  * **Exported thunks**
  */
 /**
- * Action creator for dropping a Task in a TaskLane. This is usually called by `Tasks.jsx`.
- * Because dragging happens so frequently, we can't afford waiting for the server call to resolve before updating the frontend.
+ * The action creator for dropping a Task in a TaskLane. This is usually called by `Tasks.jsx`.
+ * Because dragging happens so frequently, we can't afford to wait for the server call to resolve before updating the frontend.
  * Therefore, we update the Redux store first (so UI remains responsive), and update the server later in the background.
+ *
+ * The reason this is not just a case of `updateTask`, is because their function signatures are different. In `Tasks.jsx`, the `<Tasks>`
+ * doesn't know the `<Task>` being dragged right now. Therefore it relies on this action creator to figure that out.
+ *
  * @param {String} destinationStatus - The status to be dropped onto
  * @returns {Function}
  */
 export const acceptTask = destinationStatus => (dispatch, getState) => {
-  // Only one of the task will have "dragging" as true.
+  // Figure out the task being dragged just now.
   const draggedTask = getState().tasks.list.find(task => task.dragging);
 
   const updatedTask = {
@@ -224,11 +243,13 @@ export const acceptTask = destinationStatus => (dispatch, getState) => {
     dragging: false
   };
 
+  // Change the client side store first.
   dispatch({
     type: ACCEPT,
     payload: updatedTask
   });
 
+  // Update the server in the background.
   axios
     .put(`/tasks/${updatedTask.id}`, updatedTask)
     .then(response => {
@@ -247,9 +268,9 @@ export const acceptTask = destinationStatus => (dispatch, getState) => {
 /**
  * Thunk for completing a new task (since we only get title and description), then send it to the server.
  * All new Tasks should have `status` of `TODO`.
- * @param {String} title
- * @param {String} description
- * @returns {function}
+ * @param {string} title
+ * @param {string} description
+ * @returns {Function}
  */
 export const createTask = (title, description) => (dispatch, getState) => {
   dispatch({ type: CREATE });
@@ -258,7 +279,7 @@ export const createTask = (title, description) => (dispatch, getState) => {
     title,
     description,
     dragging: false,
-    id: getState().tasks.list.length + 1, // The ID really should be generated by the server.
+    id: getState().tasks.list.length + 1, // TODO: The ID really should be generated by the server.
     status: status.TO_DO.title
   };
 
@@ -280,9 +301,14 @@ export const deleteTask = id => dispatch => {
     payload: { id }
   });
 
+  // TODO: If deletion failed in the server, revert the client.
   axios.delete(`/tasks/${id}`).catch(error => failed(error));
 };
 
+/**
+ * Call this when app loads to retrieve all tasks stored on the server.
+ * @returns {Function}
+ */
 export const fetchTasks = () => dispatch => {
   dispatch({ type: FETCH });
 
@@ -293,12 +319,15 @@ export const fetchTasks = () => dispatch => {
 };
 
 /**
- * This is mainly used by Task to change the dragging property. No need to update the server for that.
+ * For now, this is mainly used by `<Task>` to change the `dragging` property. No need to update the server for that.
  * To change a task's lane, see `acceptTask`.
- * In the future when we allow editing the title and description of a task (even in a modal dialog),
+ *
+ * In the future when we allow editing the `title` and `description` of a `<Task>` (even better, in a modal dialog),
  * this has to somehow tell if the changed property is `dragging`. If not, send an API call to the server.
  * For now, don't worry about it.
+ *
  * @param {Task} modifiedTask
+ * @returns {Action}
  */
 export const updateTask = modifiedTask => ({
   type: UPDATE,
