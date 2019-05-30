@@ -41,6 +41,13 @@
       "title": "Review BlackBerry KEY2",
       "description": "Are physical keyboards still relevant, and worth the tradeoffs?",
       "status": "Completed"
+    },
+    {
+      "title": "Review Huawei P30 Pro",
+      "description": "Nevermind...",
+      "dragging": false,
+      "id": 7,
+      "status": "To Do"
     }
   ]
 }

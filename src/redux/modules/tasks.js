@@ -4,6 +4,7 @@ import { status } from "../../constants";
 
 const ACCEPT = "waffle/tasks/ACCEPT"; // Fired when a Task is dropped in a TaskLane.
 const CREATE = "waffle/tasks/CREATE";
+const CREATE_SUCCESS = "waffle/task/CREATE_SUCCESS";
 
 // This could be applied to all network call, such as FETCH, UPDATE and DELETE.
 const FAILED = "waffle/tasks/FAILED";
@@ -33,7 +34,7 @@ const DELETE = "waffle/tasks/DELETE";
  * @typedef {Object} State
  * @property {Object} error
  * @property {Task[]} list
- * @property {boolean} loading
+ * @property {boolean} loading // Would use this to determine whether to show a spinner or loading bar, but don't bother now.
  */
 
 /**
@@ -58,20 +59,17 @@ const acceptTaskReducer = (state, action) => ({
 /**
  * Create a new task and put it at the end of the existing list of tasks.
  * @param {State} state
- * @param {Action} action
- * @returns {State} - The new tasks
+ * @returns {State}
  */
-const createTaskReducer = (state, action) => ({
+const createTaskReducer = state => ({
   ...state,
-  list: [
-    ...state.list,
-    {
-      ...action.payload,
-      dragging: false,
-      id: state.list.length + 1,
-      status: status.TO_DO.title
-    }
-  ]
+  error: null,
+  loading: true
+});
+
+const createTaskSuccessReducer = (state, action) => ({
+  ...state,
+  list: [...state.list, action.payload]
 });
 
 /**
@@ -148,7 +146,9 @@ export default (state = emptyState, action) => {
     case ACCEPT:
       return acceptTaskReducer(state, action);
     case CREATE:
-      return createTaskReducer(state, action);
+      return createTaskReducer(state);
+    case CREATE_SUCCESS:
+      return createTaskSuccessReducer(state, action);
     case DELETE:
       return deleteTaskReducer(state, action);
     case FAILED:
@@ -178,17 +178,36 @@ export const acceptTask = destinationStatus => ({
 
 /**
  * Action creator for creating a new task.
- * @param {string} title
- * @param {string} description
+ * @param {Task} newTask
  * @returns {Action}
  */
-export const createTask = (title, description) => ({
-  type: CREATE,
-  payload: {
-    title,
-    description
-  }
+const createTaskSuccess = newTask => ({
+  type: CREATE_SUCCESS,
+  payload: newTask
 });
+
+/**
+ * Thunk for completing a new task, then send it to the server.
+ * @param {String} title
+ * @param {String} description
+ * @returns {function}
+ */
+export const createTask = (title, description) => (dispatch, getState) => {
+  dispatch({ type: CREATE });
+
+  const newTask = {
+    title,
+    description,
+    dragging: false,
+    id: getState().tasks.list.length + 1,
+    status: status.TO_DO.title
+  };
+
+  return axios
+    .post("/tasks", newTask)
+    .then(response => dispatch(createTaskSuccess(response.data)))
+    .catch(error => dispatch(failed(error)));
+};
 
 /**
  * Action creator for deleting an existing task.
@@ -200,12 +219,12 @@ export const deleteTask = id => ({
   payload: { id }
 });
 
-export const failed = error => ({
+const failed = error => ({
   type: FAILED,
   payload: error
 });
 
-export const fetchSuccess = tasks => ({
+const fetchSuccess = tasks => ({
   type: FETCH_SUCCESS,
   payload: tasks
 });
