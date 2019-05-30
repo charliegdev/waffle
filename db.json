@@ -40,13 +40,20 @@
       "dragging": false,
       "title": "Review BlackBerry KEY2",
       "description": "Are physical keyboards still relevant, and worth the tradeoffs?",
-      "status": "In Progress"
+      "status": "Completed"
     },
     {
       "title": "Review Huawei P30 Pro",
       "description": "Nevermind...",
       "dragging": false,
       "id": 7,
+      "status": "To Do"
+    },
+    {
+      "title": "Review OnePlus7",
+      "description": "How should I handle YouTube's max 60 Hz refresh rate to show case OnePlus 7 Pro's 90 Hz display?",
+      "dragging": false,
+      "id": 8,
       "status": "To Do"
     }
   ]

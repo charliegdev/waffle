@@ -229,7 +229,7 @@ export const acceptTask = destinationStatus => (dispatch, getState) => {
     payload: updatedTask
   });
 
-  return axios
+  axios
     .put(`/tasks/${updatedTask.id}`, updatedTask)
     .then(response => {
       /**
@@ -262,7 +262,7 @@ export const createTask = (title, description) => (dispatch, getState) => {
     status: status.TO_DO.title
   };
 
-  return axios
+  axios
     .post("/tasks", newTask)
     .then(response => dispatch(createTaskSuccess(response.data)))
     .catch(error => dispatch(failed(error)));
@@ -281,7 +281,7 @@ export const deleteTask = id => ({
 export const fetchTasks = () => dispatch => {
   dispatch({ type: FETCH });
 
-  return axios
+  axios
     .get("/tasks")
     .then(response => dispatch(fetchSuccess(response.data)))
     .catch(error => dispatch(failed(error)));
