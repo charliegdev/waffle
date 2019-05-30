@@ -270,13 +270,18 @@ export const createTask = (title, description) => (dispatch, getState) => {
 
 /**
  * Action creator for deleting an existing task.
+ * Same as `acceptTask`, we delete the local copy first, then inform the server.
  * @param {number} id
- * @return {Action}
+ * @return {Function}
  */
-export const deleteTask = id => ({
-  type: DELETE,
-  payload: { id }
-});
+export const deleteTask = id => dispatch => {
+  dispatch({
+    type: DELETE,
+    payload: { id }
+  });
+
+  axios.delete(`/tasks/${id}`).catch(error => failed(error));
+};
 
 export const fetchTasks = () => dispatch => {
   dispatch({ type: FETCH });
