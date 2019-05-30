@@ -54,6 +54,7 @@
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
+    "server": "./node_modules/.bin/json-server --watch db.json --port 3001",
     "test": "node scripts/test.js --watchAll"
   },
   "browserslist": [
@@ -127,6 +128,7 @@
     "jest-pnp-resolver": "1.0.2",
     "jest-resolve": "23.6.0",
     "jest-watch-typeahead": "^0.2.1",
+    "json-server": "^0.15.0",
     "react-dev-utils": "^8.0.0",
     "react-test-renderer": "^16.8.6",
     "typings-for-css-modules-loader": "^1.7.0",
