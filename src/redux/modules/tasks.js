@@ -215,8 +215,8 @@ export const fetchTasks = () => dispatch => {
 
   return axios
     .get("/tasks")
-    .then(response => response.data)
-    .catch(error => error);
+    .then(response => dispatch(fetchSuccess(response.data)))
+    .catch(error => dispatch(failed(error)));
 };
 
 /**

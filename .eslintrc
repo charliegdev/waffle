@@ -6,7 +6,8 @@
   "extends": ["eslint:recommended", "plugin:react-app/recommended"],
   "globals": {
     "Atomics": "readonly",
-    "SharedArrayBuffer": "readonly"
+    "SharedArrayBuffer": "readonly",
+    "axios": "readonly"
   },
   "parserOptions": {
     "ecmaFeatures": {
