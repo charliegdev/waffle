@@ -39,7 +39,7 @@ Tasks.defaultProps = {
 };
 
 const mapState = ({ tasks }) => ({
-  tasks
+  tasks: tasks.list
 });
 
 const mapDispatch = dispatch => bindActionCreators(actions.tasks, dispatch);
