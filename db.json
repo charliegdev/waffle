@@ -1,44 +1,46 @@
-[
-  {
-    "description": "Review the newest flagship iPhone.",
-    "dragging": false,
-    "id": 1,
-    "status": "To Do",
-    "title": "Review iPhone XS Max"
-  },
-  {
-    "description": "Review the newest \"budget-friendly\" iPhone.",
-    "dragging": false,
-    "id": 2,
-    "status": "To Do",
-    "title": "Review iPhone XR"
-  },
-  {
-    "description": "Review the newest Samsung flagship",
-    "dragging": false,
-    "id": 3,
-    "status": "In Progress",
-    "title": "Review Samsung Galaxy S10 Plus"
-  },
-  {
-    "description": "Can the Google's flagship compete with Apple and Samsung?",
-    "dragging": false,
-    "id": 4,
-    "status": "In Progress",
-    "title": "Review Google Pixel 3 XL"
-  },
-  {
-    "id": 5,
-    "dragging": false,
-    "title": "Review OnePlus 6T",
-    "description": "How much are we giving up for a \"flagship killer\"?",
-    "status": "Completed"
-  },
-  {
-    "id": 6,
-    "dragging": false,
-    "title": "Review BlackBerry KEY2",
-    "description": "Are physical keyboards still relevant, and worth the tradeoffs?",
-    "status": "Completed"
-  }
-]
+{
+  "initialTasks": [
+    {
+      "description": "Review the newest flagship iPhone.",
+      "dragging": false,
+      "id": 1,
+      "status": "To Do",
+      "title": "Review iPhone XS Max"
+    },
+    {
+      "description": "Review the newest \"budget-friendly\" iPhone.",
+      "dragging": false,
+      "id": 2,
+      "status": "To Do",
+      "title": "Review iPhone XR"
+    },
+    {
+      "description": "Review the newest Samsung flagship",
+      "dragging": false,
+      "id": 3,
+      "status": "In Progress",
+      "title": "Review Samsung Galaxy S10 Plus"
+    },
+    {
+      "description": "Can the Google's flagship compete with Apple and Samsung?",
+      "dragging": false,
+      "id": 4,
+      "status": "In Progress",
+      "title": "Review Google Pixel 3 XL"
+    },
+    {
+      "id": 5,
+      "dragging": false,
+      "title": "Review OnePlus 6T",
+      "description": "How much are we giving up for a \"flagship killer\"?",
+      "status": "Completed"
+    },
+    {
+      "id": 6,
+      "dragging": false,
+      "title": "Review BlackBerry KEY2",
+      "description": "Are physical keyboards still relevant, and worth the tradeoffs?",
+      "status": "Completed"
+    }
+  ]
+}

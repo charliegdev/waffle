@@ -8,6 +8,7 @@
     "@svgr/webpack": "^4.2.0",
     "@types/jest": "^24.0.13",
     "@types/webpack-env": "^1.13.9",
+    "axios": "^0.18.0",
     "babel-core": "7.0.0-bridge.0",
     "babel-eslint": "9.0.0",
     "babel-jest": "^24.7.1",
@@ -113,6 +114,7 @@
     ]
   },
   "devDependencies": {
+    "enzyme": "^3.9.0",
     "eslint": "^5.16.0",
     "eslint-config-react-app": "^3.0.8",
     "eslint-loader": "2.1.1",
