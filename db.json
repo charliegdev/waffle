@@ -4,7 +4,7 @@
       "description": "Review the newest flagship iPhone.",
       "dragging": false,
       "id": 1,
-      "status": "To Do",
+      "status": "In Progress",
       "title": "Review iPhone XS Max"
     },
     {
@@ -47,14 +47,14 @@
       "description": "Nevermind...",
       "dragging": false,
       "id": 7,
-      "status": "To Do"
+      "status": "In Progress"
     },
     {
       "title": "Review OnePlus7",
       "description": "How should I handle YouTube's max 60 Hz refresh rate to show case OnePlus 7 Pro's 90 Hz display?",
       "dragging": false,
       "id": 8,
-      "status": "To Do"
+      "status": "In Progress"
     }
   ]
 }
