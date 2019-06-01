@@ -8,6 +8,7 @@
   - [Move Task to Another Column](#move-task-to-another-column)
   - [Data Preservation](#data-preservation)
   - [Styling and Design](#styling-and-design)
+  - [Additional Details on GitHub](#additional-details-on-github)
 - [Upcoming Functionalities](#upcoming-functionalities)
 - [Tech](#tech)
 - [Build & Test](#build--test)
@@ -25,15 +26,7 @@ The application is still under active development; new functions are continually
 
 ## Features
 
-Besides the list below, the GitHub repo also contains lots of detailed information:
-
-- You can look at [the closed pull requests](https://github.com/charliegdev/waffle/pulls?q=is%3Apr+is%3Aclosed) on details about how these functionalities are implemented, such as the [PR for SCSS import](https://github.com/charliegdev/waffle/pull/45) and its [closed issue](https://github.com/charliegdev/waffle/issues/38).
-- Similarly, the GitHub [open issues](https://github.com/charliegdev/waffle/issues) contains the most up-to-date list of planned features and bug fixes.
-- From a project management point of view, you can see how the pull requests and issues were managed inside the [GitHub Projects](https://github.com/charliegdev/waffle/projects) section; for example, the [Sprint 1](https://github.com/charliegdev/waffle/projects/1) board.
-- _Optionally_, the [commits](https://github.com/charliegdev/waffle/commits/master) might tell some detailed information as well.
-- Finally, you can visit the [Insight page](https://github.com/charliegdev/waffle/pulse) on the velocity of the development.
-
-Below is a list of major implemented features.
+Below is a list of major features.
 
 ### Add
 
@@ -55,7 +48,17 @@ Data is saved, so nothing is lost after refresh or server restart:
 
 ### Styling and Design
 
-As an early prototype, I took [Meister Task](https://www.meistertask.com/) as my inspiration for my styles. In the future, when the product is more mature, there will likely be some changes in the art style.
+As an early prototype, I took [MeisterTask](https://www.meistertask.com/) as my inspiration for my styles. In the future, when the product is more mature, there will likely be some changes in the art style.
+
+### Additional Details on GitHub
+
+Besides the list above, the GitHub repo also contains lots of detailed information:
+
+- You can look at [the closed pull requests](https://github.com/charliegdev/waffle/pulls?q=is%3Apr+is%3Aclosed) on details about how these functionalities are implemented, such as the [PR for SCSS import](https://github.com/charliegdev/waffle/pull/45) and its [closed issue](https://github.com/charliegdev/waffle/issues/38).
+- Similarly, the GitHub [open issues](https://github.com/charliegdev/waffle/issues) contains the most up-to-date list of planned features and bug fixes.
+- From a project management point of view, you can see how the pull requests and issues were managed inside the [GitHub Projects](https://github.com/charliegdev/waffle/projects) section; for example, the [Sprint 1](https://github.com/charliegdev/waffle/projects/1) board.
+- _Optionally_, the [commits](https://github.com/charliegdev/waffle/commits/master) might tell some detailed information as well.
+- Finally, you can visit the [Insight page](https://github.com/charliegdev/waffle/pulse) on the velocity of the development.
 
 ## Upcoming Functionalities
 
