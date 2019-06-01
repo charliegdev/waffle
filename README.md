@@ -18,9 +18,9 @@
 
 <!-- /TOC -->
 
-Waffle is a Kanban board web app, implemented as a client-side React-Redux application.
+**Waffle** is a Kanban board web app, implemented as a client-side React-Redux application.
 
-The application is still under active development; new functions are constantly being built.
+The application is still under active development; new functions are continually being built.
 
 ## Functionalities
 
@@ -44,11 +44,11 @@ Data is saved, so nothing is lost after refresh or server restart:
 
 ### Styling and Design
 
-As an early prototype, I took [Meister Task](https://www.meistertask.com/) as my inspiration for my styles. In the future when the product is more mature, there will likely be some changes on the art style.
+As an early prototype, I took [Meister Task](https://www.meistertask.com/) as my inspiration for my styles. In the future, when the product is more mature, there will likely be some changes in the art style.
 
 ## Upcoming Functionalities
 
-Since the project is still in a very early stage, lots of functionalities are awaiting design and implementation, including these, in the order of priority:
+Since the project is still at a very early stage, lots of functionalities are awaiting design and implementation. They are listed down below, with the highest priority item on the top:
 
 1. Reordering tasks
 1. Clicking on the task to open a modal dialog
@@ -84,7 +84,7 @@ This section is about the technology used to develop the application.
 I plan to use these technologies in future developments:
 
 1. [Cypress](https://www.cypress.io/) in integration testing. At this point, the application is big enough to have meaningful automated integration test, so I think it's a great idea to start writing tests alongside development, instead of waiting for the application to get much larger and introduce regression bugs without knowing.
-1. One of [Python Flask](http://flask.pocoo.org/) or [PHP Laravel](https://laravel.com/) is what I planned to use as the server technology. Right we I'm using JSON Server which is fine for storing, modifiying and retrieving tasks; however, to do anything substantial on the server side, I'll need a real server technology, and both Flask and Laravel are something I would like to try.
+1. One of [Python Flask](http://flask.pocoo.org/) or [PHP Laravel](https://laravel.com/) as the server technology. Right now I'm using JSON Server which is fine for storing, modifying and retrieving tasks; however, to do anything substantial on the server side, I'll need a real server technology, and both Flask and Laravel are something I would like to try.
 
 ## Build & Test
 
@@ -127,4 +127,4 @@ Here is a sample terminal output in [Hyper](https://hyper.is/):
 
 ## Naming
 
-Its name happens to clash with another [now-closed Kanban board app](https://www.cypress.io/) with the same name. When I thought of the name "Waffle", the aforementioned Waffle application was already closed and I wasn't aware of its existence. I don't have a plan to monetize from this product; but if I do one day, I will probably give the application an external product name to avoid potential legal hassle.
+Its name happens to clash with another [now-closed Kanban board app](https://www.cypress.io/) with the same name. When I thought of the name _Waffle_, the application mentioned above was already closed, and I wasn't aware of its existence. I don't have a plan to monetize from this product; but if I do one day, I will probably give the application an external product name to avoid potential legal hassle.
