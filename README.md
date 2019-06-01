@@ -1,22 +1,14 @@
 # Waffle
 
-<!-- TOC -->
+<!-- TOC depthTo:2 -->
 
 - [Features](#features)
-  - [Add](#add)
-  - [Delete](#delete)
-  - [Move Task to Another Column](#move-task-to-another-column)
-  - [Data Preservation](#data-preservation)
-  - [Styling and Design](#styling-and-design)
-  - [Additional Details on GitHub](#additional-details-on-github)
 - [Upcoming Functionalities](#upcoming-functionalities)
 - [Tech](#tech)
 - [Build & Test](#build--test)
-  - [Prerequisite](#prerequisite)
-  - [Build & Run](#build--run)
-  - [Test](#test)
 - [Naming](#naming)
 - [License](#license)
+- [Contribution & Code of Conduct](#contribution--code-of-conduct)
 
 <!-- /TOC -->
 
@@ -146,3 +138,9 @@ Its name happens to clash with another [now-closed Kanban board app](https://www
 ## License
 
 MIT license. Use it in whatever way you want; credit is appreciated.
+
+View the MIT license [here](LICENSE).
+
+## Contribution & Code of Conduct
+
+If you see something worth improving or not working, it'll be awesome if you can leave an issue, or even open a pull request yourself. Constructive criticism is always appreciated. Please follow the [Code of Conduct](CODE_OF_CONDUCT.md).
