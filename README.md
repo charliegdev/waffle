@@ -133,7 +133,7 @@ Here is a sample terminal output in [Hyper](https://hyper.is/):
 
 ## Naming
 
-Its name happens to clash with another [now-closed Kanban board app](https://www.cypress.io/) with the same name. When I thought of the name _Waffle_, the application mentioned above was already closed, and I wasn't aware of its existence. I don't have a plan to monetize from this product; but if I do one day, I will probably give the application an external product name to avoid potential legal hassle.
+Its name happens to clash with another [now-closed Kanban board app](https://news.ycombinator.com/item?id=19400833) with the same name. When I thought of the name _Waffle_, the application mentioned above was already closed, and I wasn't aware of its existence. I don't have a plan to monetize from this product; but if I do one day, I will probably give the application an external product name to avoid potential legal hassle.
 
 ## License
 
