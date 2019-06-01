@@ -2,7 +2,7 @@
 
 <!-- TOC -->
 
-- [Functionalities](#functionalities)
+- [Features](#features)
   - [Add](#add)
   - [Delete](#delete)
   - [Move Task to Another Column](#move-task-to-another-column)
@@ -15,6 +15,7 @@
   - [Build & Run](#build--run)
   - [Test](#test)
 - [Naming](#naming)
+- [License](#license)
 
 <!-- /TOC -->
 
@@ -22,14 +23,17 @@
 
 The application is still under active development; new functions are continually being built.
 
-## Functionalities
+## Features
 
-Besides the documentation below, the GitHub repo also contains lots of detailed information:
+Besides the list below, the GitHub repo also contains lots of detailed information:
 
 - You can look at [the closed pull requests](https://github.com/charliegdev/waffle/pulls?q=is%3Apr+is%3Aclosed) on details about how these functionalities are implemented, such as the [PR for SCSS import](https://github.com/charliegdev/waffle/pull/45) and its [closed issue](https://github.com/charliegdev/waffle/issues/38).
 - Similarly, the GitHub [open issues](https://github.com/charliegdev/waffle/issues) contains the most up-to-date list of planned features and bug fixes.
-- Finally, you can see how the pull requests and issues were managed inside the [GitHub Projects](https://github.com/charliegdev/waffle/projects) section; for example, the [Sprint 1](https://github.com/charliegdev/waffle/projects/1) board.
+- From a project management point of view, you can see how the pull requests and issues were managed inside the [GitHub Projects](https://github.com/charliegdev/waffle/projects) section; for example, the [Sprint 1](https://github.com/charliegdev/waffle/projects/1) board.
 - _Optionally_, the [commits](https://github.com/charliegdev/waffle/commits/master) might tell some detailed information as well.
+- Finally, you can visit the [Insight page](https://github.com/charliegdev/waffle/pulse) on the velocity of the development.
+
+Below is a list of major implemented features.
 
 ### Add
 
@@ -135,3 +139,7 @@ Here is a sample terminal output in [Hyper](https://hyper.is/):
 ## Naming
 
 Its name happens to clash with another [now-closed Kanban board app](https://www.cypress.io/) with the same name. When I thought of the name _Waffle_, the application mentioned above was already closed, and I wasn't aware of its existence. I don't have a plan to monetize from this product; but if I do one day, I will probably give the application an external product name to avoid potential legal hassle.
+
+## License
+
+MIT license. Use it in whatever way you want; credit is appreciated.
