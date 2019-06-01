@@ -7,8 +7,13 @@
   - [Delete](#delete)
   - [Move Task to Another Column](#move-task-to-another-column)
   - [Data Preservation](#data-preservation)
+  - [Styling and Design](#styling-and-design)
 - [Upcoming Functionalities](#upcoming-functionalities)
 - [Tech](#tech)
+- [Build & Test](#build--test)
+  - [Prerequisite](#prerequisite)
+  - [Build & Run](#build--run)
+  - [Test](#test)
 - [Naming](#naming)
 
 <!-- /TOC -->
@@ -36,6 +41,10 @@ The application is still under active development; new functions are constantly 
 Data is saved, so nothing is lost after refresh or server restart:
 
 ![save-tasks](screenshots/save.gif)
+
+### Styling and Design
+
+As an early prototype, I took [Meister Task](https://www.meistertask.com/) as my inspiration for my styles. In the future when the product is more mature, there will likely be some changes on the art style.
 
 ## Upcoming Functionalities
 
@@ -76,6 +85,45 @@ I plan to use these technologies in future developments:
 
 1. [Cypress](https://www.cypress.io/) in integration testing. At this point, the application is big enough to have meaningful automated integration test, so I think it's a great idea to start writing tests alongside development, instead of waiting for the application to get much larger and introduce regression bugs without knowing.
 1. One of [Python Flask](http://flask.pocoo.org/) or [PHP Laravel](https://laravel.com/) is what I planned to use as the server technology. Right we I'm using JSON Server which is fine for storing, modifiying and retrieving tasks; however, to do anything substantial on the server side, I'll need a real server technology, and both Flask and Laravel are something I would like to try.
+
+## Build & Test
+
+If you would like to run this on your machine, follow these steps.
+
+### Prerequisite
+
+Make sure you already have those installed:
+
+- [Node.js](https://nodejs.org/en/). `npm` comes automatically as part of Node.js; optionally, you can also install [Yarn](https://yarnpkg.com/en/) from Facebook.
+- [Git](https://git-scm.com/)
+
+### Build & Run
+
+1. Clone the repo: `git clone git@github.com:charliegdev/waffle.git`
+1. On the command line, navigate to the repo directory.
+1. In the directory, run `yarn` or `npm i` to install all local dependencies.
+1. Once all the dependencies are installed, run `yarn start` or `npm start` to start the Webpack server for the client.
+1. In another terminal tab, navigate to the project root and run `yarn run server` or `npm run server` to start the JSON server.
+
+### Test
+
+To start the test, navigate to the project root and run
+
+```bash
+yarn test
+```
+
+or
+
+```bash
+npm test
+```
+
+We haven't setup Cypress tests yet, so the unit tests in Jest is all we have.
+
+Here is a sample terminal output in [Hyper](https://hyper.is/):
+
+![terminal-output](screenshots/output.PNG)
 
 ## Naming
 
