@@ -26,9 +26,10 @@ The application is still under active development; new functions are continually
 
 Besides the documentation below, the GitHub repo also contains lots of detailed information:
 
-- You can look at [the closed pull requests](https://github.com/charliegdev/waffle/pulls?q=is%3Apr+is%3Aclosed) on details about how these functionalities are implemented.
+- You can look at [the closed pull requests](https://github.com/charliegdev/waffle/pulls?q=is%3Apr+is%3Aclosed) on details about how these functionalities are implemented, such as the [PR for SCSS import](https://github.com/charliegdev/waffle/pull/45) and its [closed issue](https://github.com/charliegdev/waffle/issues/38).
 - Similarly, the GitHub [open issues](https://github.com/charliegdev/waffle/issues) contains the most up-to-date list of planned features and bug fixes.
 - Finally, you can see how the pull requests and issues were managed inside the [GitHub Projects](https://github.com/charliegdev/waffle/projects) section; for example, the [Sprint 1](https://github.com/charliegdev/waffle/projects/1) board.
+- _Optionally_, the [commits](https://github.com/charliegdev/waffle/commits/master) might tell some detailed information as well.
 
 ### Add
 
