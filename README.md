@@ -24,6 +24,12 @@ The application is still under active development; new functions are continually
 
 ## Functionalities
 
+Besides the documentation below, the GitHub repo also contains lots of detailed information:
+
+- You can look at [the closed pull requests](https://github.com/charliegdev/waffle/pulls?q=is%3Apr+is%3Aclosed) on details about how these functionalities are implemented.
+- Similarly, the GitHub [open issues](https://github.com/charliegdev/waffle/issues) contains the most up-to-date list of planned features and bug fixes.
+- Finally, you can see how the pull requests and issues were managed inside the [GitHub Projects](https://github.com/charliegdev/waffle/projects) section; for example, the [Sprint 1](https://github.com/charliegdev/waffle/projects/1) board.
+
 ### Add
 
 ![new-task](screenshots/new-task.gif)
@@ -70,7 +76,7 @@ Besides new features, new tests should be written as well:
 This section is about the technology used to develop the application.
 
 - [React](https://reactjs.org/) as the view library.
-- [Redux](https://redux.js.org/) as the state container.
+- [Redux](https://redux.js.org/) as the state container. Specifically, [Redux Ducks Pattern](https://github.com/erikras/ducks-modular-redux) is used, so the Redux codebase is organized to scale better for a large application.
 - [Segment Evergreen](https://evergreen.segment.com/) & [Blueprint](https://blueprintjs.com/) as the React component libraries. All the components in Waffle are built based on Evergreen UI and Blueprint.
 - [CSS Module](https://github.com/css-modules/css-modules) & [SCSS](https://sass-lang.com/) as the styling solution.
 - [JSDoc and VS Code TypeScript service](https://www.typescriptlang.org/docs/handbook/type-checking-javascript-files.html) as an opt-in static type checker.
